@@ -150,7 +150,7 @@ class ResultPlot(object):
         if save_img:
             plt.savefig('GAN_1d_gaussian' + '_mu_%g' % self.mu + '_sigma_%g' % self.sigma + '.png')
 
-        plt.show()
+        #plt.show()
 
     def show_plot_seaborn(self, pd, pg, save_img=True):
         plt.clf()
@@ -165,15 +165,15 @@ class ResultPlot(object):
         plt.title("1-D Generative Adversarial Network")
 
         if save_img:
-            plt.savefig("GAN_1d_gaussian_seaborn.png")
-        plt.show()
+            plt.savefig('GAN_1d_gaussian_sns' + '_mu_%g' % self.mu + '_sigma_%g' % self.sigma + '.png')
+        #plt.show()
 
 
 def main():
     """ parameters """
     # p_data
-    mu = 2
-    sigma = 4
+    mu = 1
+    sigma = 1
 
     # training
     B = 150                 # batch-size
@@ -181,7 +181,7 @@ def main():
     TRAIN_ITERS = 3000      # number of iterations
 
     # network
-    n_hidden = 128           # number of nodes per layer
+    n_hidden = 32           # number of nodes per layer
 
     """ build graph """
 
@@ -316,7 +316,7 @@ def main():
     #plt.show()
     # plot results
     plot.show_results(db_init, db_pre_trained, db_trained, d, g, save_img=True)
-    plot.show_plot_seaborn(pd, pg)
+    plot.show_plot_seaborn(d, g)
     sess.close()
 
 
